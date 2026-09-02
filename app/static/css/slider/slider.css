@@ -1,0 +1,15 @@
+/* Transición suave de opacidad entre slides (fade) */
+.slide-fade {
+    transition: opacity 0.7s ease-in-out;
+}
+
+/* Barra de progreso animada mientras corre el autoplay */
+#progress-bar {
+    transition: width 0.1s linear;
+}
+
+/* Miniatura activa */
+.thumb.active {
+    opacity: 1;
+    --tw-ring-color: #fbbf24; /* amber-400 */
+}

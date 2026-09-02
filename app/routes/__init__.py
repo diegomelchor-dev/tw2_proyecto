@@ -8,4 +8,8 @@ def home():
 
 @main.route("/carrusel")
 def carrusel():
-    return render_template("carrusel_slider/carrusel.html")
+    return render_template("carrusel/carrusel.html")
+
+@main.route("/slider")
+def slider():
+    return render_template("slider/slider.html")

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block titulo %} Slider {% endblock %}
+
+{% block css %}
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider/slider.css') }}">
+{% endblock %}
+
+{% block contenido %}
+
+<section class="max-w-4xl mx-auto py-10 px-4">
+
+    <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">Galería en Slider</h2>
+
+    <div id="slider" class="relative rounded-2xl overflow-hidden shadow-xl bg-slate-900 group">
+
+        <!-- Barra de progreso del autoplay -->
+        <div class="absolute top-0 left-0 h-1 bg-amber-400 z-20" id="progress-bar" style="width: 0%;"></div>
+
+        <!-- Contador -->
+        <div class="absolute top-4 right-4 z-20 bg-black/50 text-white text-sm px-3 py-1 rounded-full backdrop-blur-sm">
+            <span id="contador">1</span> / <span id="total">8</span>
+        </div>
+
+        <!-- Slides -->
+        <div class="relative h-[420px] md:h-[480px]" id="slides-container">
+            <div class="slide-fade absolute inset-0 opacity-100"><img src="{{ url_for('static', filename='img/slider/imagen01.jpg') }}" alt="Imagen 1" class="w-full h-full object-cover"></div>
+            <div class="slide-fade absolute inset-0 opacity-0"><img src="{{ url_for('static', filename='img/slider/imagen02.jpg') }}" alt="Imagen 2" class="w-full h-full object-cover"></div>
+            <div class="slide-fade absolute inset-0 opacity-0"><img src="{{ url_for('static', filename='img/slider/imagen03.jpg') }}" alt="Imagen 3" class="w-full h-full object-cover"></div>
+            <div class="slide-fade absolute inset-0 opacity-0"><img src="{{ url_for('static', filename='img/slider/imagen04.jpg') }}" alt="Imagen 4" class="w-full h-full object-cover"></div>
+            <div class="slide-fade absolute inset-0 opacity-0"><img src="{{ url_for('static', filename='img/slider/imagen05.jpg') }}" alt="Imagen 5" class="w-full h-full object-cover"></div>
+            <div class="slide-fade absolute inset-0 opacity-0"><img src="{{ url_for('static', filename='img/slider/imagen06.jpg') }}" alt="Imagen 6" class="w-full h-full object-cover"></div>
+            <div class="slide-fade absolute inset-0 opacity-0"><img src="{{ url_for('static', filename='img/slider/imagen07.jpg') }}" alt="Imagen 7" class="w-full h-full object-cover"></div>
+            <div class="slide-fade absolute inset-0 opacity-0"><img src="{{ url_for('static', filename='img/slider/imagen08.jpg') }}" alt="Imagen 8" class="w-full h-full object-cover"></div>
+        </div>
+
+        <!-- Flechas (visibles al pasar el mouse) -->
+        <button id="btn-prev" aria-label="Anterior"
+            class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-slate-800 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+            &#10094;
+        </button>
+        <button id="btn-next" aria-label="Siguiente"
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-slate-800 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+            &#10095;
+        </button>
+
+        <!-- Boton play/pause -->
+        <button id="btn-play" aria-label="Pausar/Reanudar"
+            class="absolute bottom-4 right-4 z-20 w-9 h-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center text-sm backdrop-blur-sm">
+            <span id="play-icon">&#10074;&#10074;</span>
+        </button>
+    </div>
+
+    <!-- Miniaturas -->
+    <div id="thumbs" class="flex gap-3 mt-4 overflow-x-auto pb-2">
+        <img src="{{ url_for('static', filename='img/slider/imagen01.jpg') }}" data-idx="0" class="thumb w-20 h-14 object-cover rounded-lg cursor-pointer ring-2 ring-amber-400 opacity-100 transition">
+        <img src="{{ url_for('static', filename='img/slider/imagen02.jpg') }}" data-idx="1" class="thumb w-20 h-14 object-cover rounded-lg cursor-pointer ring-2 ring-transparent opacity-60 hover:opacity-100 transition">
+        <img src="{{ url_for('static', filename='img/slider/imagen03.jpg') }}" data-idx="2" class="thumb w-20 h-14 object-cover rounded-lg cursor-pointer ring-2 ring-transparent opacity-60 hover:opacity-100 transition">
+        <img src="{{ url_for('static', filename='img/slider/imagen04.jpg') }}" data-idx="3" class="thumb w-20 h-14 object-cover rounded-lg cursor-pointer ring-2 ring-transparent opacity-60 hover:opacity-100 transition">
+        <img src="{{ url_for('static', filename='img/slider/imagen05.jpg') }}" data-idx="4" class="thumb w-20 h-14 object-cover rounded-lg cursor-pointer ring-2 ring-transparent opacity-60 hover:opacity-100 transition">
+        <img src="{{ url_for('static', filename='img/slider/imagen06.jpg') }}" data-idx="5" class="thumb w-20 h-14 object-cover rounded-lg cursor-pointer ring-2 ring-transparent opacity-60 hover:opacity-100 transition">
+        <img src="{{ url_for('static', filename='img/slider/imagen07.jpg') }}" data-idx="6" class="thumb w-20 h-14 object-cover rounded-lg cursor-pointer ring-2 ring-transparent opacity-60 hover:opacity-100 transition">
+        <img src="{{ url_for('static', filename='img/slider/imagen08.jpg') }}" data-idx="7" class="thumb w-20 h-14 object-cover rounded-lg cursor-pointer ring-2 ring-transparent opacity-60 hover:opacity-100 transition">
+    </div>
+
+    <p class="text-slate-500 text-sm text-center mt-3">
+        Usa las flechas, las miniaturas, el teclado (&larr; &rarr;) o desliza con el dedo para navegar.
+    </p>
+
+</section>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='js/slider/slider.js') }}"></script>
+{% endblock %}
